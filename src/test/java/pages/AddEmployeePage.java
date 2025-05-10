@@ -34,6 +34,8 @@ public WebElement firstNameError;
 @FindBy(xpath = "(//span[contains(text(),'Required')])[1]")
 public WebElement lastNameError;
 
+@FindBy(xpath= "//*[@id='pdMainContainer']/div[1]/h1")
+public WebElement success;
 
 
 public AddEmployeePage(){

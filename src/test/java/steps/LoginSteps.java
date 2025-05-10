@@ -53,8 +53,9 @@ public class LoginSteps extends CommonMethods {
 
     @When("user login with wrong username or password")
     public void user_login_with_wrong_username_or_password() {
-        sendText("admin321", loginPage.usernameField);
-        sendText("ghsnertuldnf", loginPage.passwordField);
+        sendText(ConfigReader.read("invalidUserName"), loginPage.usernameField);
+        sendText(ConfigReader.read("invalidPassword"), loginPage.passwordField);
+
     }
 
     @Then("user see the error Invalid credentials")

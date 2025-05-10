@@ -34,7 +34,8 @@ public class AddEmployeeSteps extends CommonMethods {
     @Then("user is able to see dashboard page")
     public void user_is_able_to_see_dashboard_page() {
         //Assert.assertEquals(dashboardPage.dashboard,"Welcome Admin");
-        System.out.println("Test Passed");
+        System.out.println(dashboardPage.dashboard.getText());
+
     }
 
     @When("user clicks on PIM option")
@@ -49,8 +50,9 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @When("user enters firstname and lastname")
     public void user_enters_firstname_and_lastname() {
-        sendText("Carter", addEmployeePage.firstNameLocator);
-        sendText("Williams", addEmployeePage.lastNameLocator);
+        sendText(ConfigReader.read("firstName"),addEmployeePage.firstNameLocator);
+        sendText(ConfigReader.read("lastName"),addEmployeePage.lastNameLocator);
+
     }
 
     @When("user clicks on save button")
@@ -66,9 +68,8 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @Then("the employee should be added successfully")
     public void the_employee_should_be_added_successfully() {
-        System.out.println(addEmployeePage.saveSuccess.getText());
-        /*Assert.assertEquals(addEmployeePage.saveSuccess.getText(),"Personal Details");*/
-       /* System.out.println("Employee added successfully");*/
+        Assert.assertEquals(addEmployeePage.success.getText(),"Personal Details");
+
     }
 
     @Then("user providing a unique employee ID")
@@ -79,8 +80,8 @@ public class AddEmployeeSteps extends CommonMethods {
 
     @When("user enters incomplete or invalid information")
     public void user_enters_incomplete_or_invalid_information() {
-        sendText("Mia",addEmployeePage.firstNameLocator);
-        sendText(" ", addEmployeePage.lastNameLocator);
+        sendText(ConfigReader.read("first_name"),addEmployeePage.firstNameLocator);
+        sendText(ConfigReader.read("blankLastName"), addEmployeePage.lastNameLocator);
 
     }
 
